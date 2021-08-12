@@ -20,12 +20,18 @@ const Product = (props) => {
         <h1 className="align-middle text-primary"><Link to={"/product/"+key}>{name}</Link></h1>
           <span>by:{seller}</span> <br />
           <span>${price}</span> <br />
-          {props.showAddToCartButton===true && <button 
+          {/* {props.showAddToCartButton===true && <button 
           onClick={()=>{props.handleClicked(props.product)}} 
           type="button" class="btn btn-warning">
             <FontAwesomeIcon className="pe-1" icon={faShoppingCart} />
             Add to Cart
-            </button>}
+            </button>} */}
+
+          { props.showAddToCartButton === true && <button  
+                    onClick={()=>{props.handleClicked(props.product)}} 
+                    type="button" class="btn btn-warning"> 
+                        <FontAwesomeIcon className="pe-1" icon={faShoppingCart} /> add to cart
+                    </button>}
         </div>
       </div>
     </div>

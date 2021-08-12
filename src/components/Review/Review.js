@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { getDatabaseCart, removeFromDatabaseCart } from "../../utilities/databaseManager";
 import fakeData from "../../fakeData";
 import ReviewItem from "../ReviewItem/ReviewItem";
-import ReviewCardItem from "../ReviewCardItem/ReviewCardItem";
 import Cart from "../Cart/Cart"
 import './Review.css'
+import { useHistory } from "react-router-dom";
 const Review = () => {
   const [cart, setCart] = useState([]);
-
+  const history=useHistory();
   useEffect(() => {
     const restoreCartData = getDatabaseCart();
     console.log(restoreCartData);
@@ -37,7 +37,9 @@ const Review = () => {
   //localStorage thekeo remove na korle page refresh korle abar cole asbe ...tai "removeFromDatabaseCart" a "removeProductKey" k pathiye dibo 
   }
 
-
+const handleProceedCheckOut = ()=>{
+    history.push('/shipment')
+}
 
 
 
@@ -52,7 +54,7 @@ const Review = () => {
     <div>
         {/* <ReviewCardItem/> */}
         <Cart cart={cart}>
-            {/* <button className="main-button">Proceed Checkout</button> */}
+            <button type="button" onClick={handleProceedCheckOut} class="btn btn-warning">Proceed Checkout</button>
         </Cart>
     </div>
     </div>  
