@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Navbar = () => {
+    const [loggedInUser,setLoggedInUser]=useContext(UserContext);
     return (
         <div>
             <div>
@@ -13,16 +16,19 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        <Link class="nav-link active text-white" aria-current="page" to="/">Home</Link>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="/shop">Shop</a>
+                        <Link class="nav-link text-white" to="/shop">Shop</Link>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="/review">Order Review</a>
+                        <Link class="nav-link text-white" aria-current="page" to="/review">Order Review</Link>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="/inventory">Inventory here</a>
+                        <Link class="nav-link text-white" to="/inventory">Inventory here</Link>
+                        </li>
+                        <li>
+                            <button onClick={() => setLoggedInUser({})} class="nav-link text-primary">Sign Out</button>
                         </li>
                     </ul>
                     </div>

@@ -21,7 +21,6 @@ function App() {
   return (
     <UserContext.Provider value={[loggedUserData, setLoggedUserData]}>
           <Router>
-            <div>
             <Header></Header>
               <Switch>
               <Route exact path="/">
@@ -33,14 +32,15 @@ function App() {
                 <Route path="/review">
                   <Review/>
                 </Route>
-                <Route path="/inventory">
-                  <Inventory/>
-                </Route>
+
                 <Route path="/product/:productKey">
                   <ProductDetails/>
                 </Route>
                 <PrivateRoute path="/shipment">
                   <Shipment/>
+                </PrivateRoute>
+                <PrivateRoute path="/inventory">
+                  <Inventory/>
                 </PrivateRoute>
                 <Route path="/login">
                   <Login/>
@@ -49,7 +49,6 @@ function App() {
                    <NoMatch/>
                 </Route>
               </Switch>
-            </div>
           </Router>
     </UserContext.Provider>
   );
